@@ -32,19 +32,24 @@
       this.state = {boardItems,addShow,menuShow}
       this.showMenuClick = this.showMenuClick.bind(this)
       this.showAddClick = this.showAddClick.bind(this)
+      this.showFormMenu = this.showFormMenu.bind(this)
     }
 
 
 
     showMenuClick () {
-     console.log(this.state.menuShow)
        this.state.menuShow === true? this.setState({menuShow:false}) : this.setState({menuShow:true});
     }
 
     showAddClick () {
-     console.log(this.state.addShow)
        this.state.addShow === true? this.setState({addShow:false}) : this.setState({addShow:true});
     }
+
+    showFormMenu (event) {
+      console.log(event.target.id)
+        event.target.id === "1" && this.setState({addShow:true,menuShow:false})
+    }
+
 
     render() {
 
@@ -59,9 +64,9 @@
             <i class = "fas fa-plus fa-2x"  id = "addIcon" > < /i>
           </button>
       </header >
-      {Menu(this.state.menuShow)}
+       < Menu menuShow = {this.state.menuShow} menuClick={this.showFormMenu}/>
        <main className = "mainContent" >
-       {Form(this.state.addShow)}
+       <Form  formshow = {this.state.addShow} showClick={this.showAddClick} />
           {
             boardItems.map(item => Card(item.name, item.items))
          }

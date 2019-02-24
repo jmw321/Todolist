@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #f2f2f7;
 }
 
 .mainContent {
@@ -8,6 +9,7 @@
   display: inline-flex;
   justify-content: space-around;
   width: 100vw;
+  height: 100vh;
 }
 
 .card {
@@ -15,8 +17,12 @@
   width: 25%;
   height: 40vh;
   margin-left: 25px;
-  background-color: black;
+  background-color: #f7f6f5;
   align-items: center;
+  margin-top: 5%;
+  border-radius: 10px;
+  border-color: white;
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
 }
 
 .innerCard {
@@ -24,11 +30,13 @@
   flex-direction: row;
   width: 100%;
   height: 100%;
+  align-items: center;
 }
 
 .cardHeader {
   width: 100%;
-  background-color: pink;
+  background-color: #d67f22;
+  color: white;
   margin: 0;
   height: 15%;
 }
@@ -36,7 +44,6 @@
 ul {
   list-style: none;
   width: 68%;
-  background-color: gray;
   height: 85%;
   margin: 0;
 }
@@ -45,11 +52,15 @@ ul {
   width: 10%;
   margin: 0;
   height: 20%;
+  border-radius: 10px;
+  border-color: white;
+  box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, 0.6);
 
 }
 
 .menuButton , .addButton {
-  height: 50%;
+  height: 60%;
+
 }
 
 i {
@@ -60,9 +71,11 @@ header {
   height: 10vh;
   display: inline-flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 80vw;
+  justify-content: space-around;
+  width: 100vw;
   align-items: center;
+  background-color: #455b6e;
+  color: white;
 }
 
 
@@ -78,10 +91,15 @@ header {
 
 .menuList {
   padding: 0;
+  background-color: #c9c5c1;
+  border-radius: 10px;
+  border-color: white;
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
 }
 
 .menuItem:hover {
-  background-color: black;
+  background-color: #d67f22;
+  opacity: .9;
   color: white;
   width: 100%;
   height: 10%;
@@ -92,5 +110,8 @@ header {
   height: 50vh;
   position: absolute;
   z-index: 99999;
-  background-color: pink;
+  background-color: #c9c5c1;
+  border-radius: 10px;
+  border-color: white;
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
 }
