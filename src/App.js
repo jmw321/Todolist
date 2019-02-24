@@ -11,7 +11,7 @@
   var menuShow = false;
   var boardItems = [{
       id: 0,
-      name: "Amy",
+      name: "Aubrey",
       items: ["a", "b"]
     },
     {
@@ -39,6 +39,7 @@ var selectValue = boardItems[0].name;
       this.addTaskClick = this.addTaskClick.bind(this)
       this.handleChange = this.handleChange.bind(this);
       this.handleSelect = this.handleSelect.bind(this);
+      this.deleteItem = this.deleteItem.bind(this);
     }
 
 
@@ -73,6 +74,13 @@ var selectValue = boardItems[0].name;
         event.target.id === "1" && this.setState({addShow:true,menuShow:false})
     }
 
+    deleteItem (event) {
+      let newBoardItems = [...this.state.boardItems];
+      console.log(event.target.id)
+      newBoardItems.map(item => item.items.length = 0 )
+      this.setState({boardItems:newBoardItems})
+    }
+
 
     render() {
 
@@ -91,7 +99,7 @@ var selectValue = boardItems[0].name;
        <main className = "mainContent" >
        {Form(this.state.addShow,this.showAddClick,this.state.boardItems,this.state.value,this.addTaskClick,this.handleChange,this.state.selectValue,this.handleSelect)}
           {
-            boardItems.map(item => Card(item.name, item.items))
+            boardItems.map(item => Card(item.name, item.items, item.id, this.deleteItem))
          }
       </main>
   </div>
