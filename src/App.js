@@ -2,8 +2,9 @@
   import './App.css';
   import Card from './Card.js';
   import Menu from './Menu.js';
+  import Form from './TaskForm.js';
 
-  var addShow = true;
+  var addShow = false;
   var menuShow = false;
   var boardItems = [{
       id: 0,
@@ -30,6 +31,7 @@
       super(props);
       this.state = {boardItems,addShow,menuShow}
       this.showMenuClick = this.showMenuClick.bind(this)
+      this.showAddClick = this.showAddClick.bind(this)
     }
 
 
@@ -39,6 +41,10 @@
        this.state.menuShow === true? this.setState({menuShow:false}) : this.setState({menuShow:true});
     }
 
+    showAddClick () {
+     console.log(this.state.addShow)
+       this.state.addShow === true? this.setState({addShow:false}) : this.setState({addShow:true});
+    }
 
     render() {
 
@@ -49,12 +55,13 @@
             <i class = "fas fa-bars fa-2x"id = "menuIcon" > < /i>
           </button>
             <h1>  Task Board </h1>
-          <button className = "addButton" >
+          <button className = "addButton" onClick={this.showAddClick} >
             <i class = "fas fa-plus fa-2x"  id = "addIcon" > < /i>
           </button>
       </header >
       {Menu(this.state.menuShow)}
        <main className = "mainContent" >
+       {Form(this.state.addShow)}
           {
             boardItems.map(item => Card(item.name, item.items))
          }
