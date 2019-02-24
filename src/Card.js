@@ -9,7 +9,7 @@
                <button id = "leftButton" className = "cardButton" >
                    <i class = "fas fa-chevron-left" > < /i>
                </button >
-            <ul> {items.map(item => < li > {item} < /li>)} </ul >
+            <ul> {items.map(item => < li className = "cardItemList"> {item} < /li>)} </ul >
                <button id = "rightButton" className = "cardButton" >
                   <i class = "fas fa-chevron-right" > < /i>
                </button >

@@ -2,21 +2,22 @@ import React, {Component  } from 'react';
 import './App.css';
 
 
-class Form extends Component {
-render () { return (
-this.props.formshow === true &&
+var Form = ((addShow,showAddClick,boardItems,value,handleSubmit,handleChange,selectValue,handleSelect) => { return (
+   addShow === true &&
    <div className="form">
-   <button className="close" onClick={this.props.showClick}> X </button>
-     <form>
-     <select>
-      <option> Sean </option>
-      <option> Ethan </option>
+   <button className="close" onClick={showAddClick} > X </button>
+     <form onSubmit={handleSubmit} >
+     <select className="boardItemsOptions" value={selectValue} onChange={handleSelect}>
+     {boardItems.map(item => <option id={item.id}> {item.name} </option> )}
     </select>
-       <input type="text">
+       <input type="text" value={value} onChange={handleChange}>
+       </input>
+       <input type="submit" value="Submit">
+
        </input>
      </form>
    </div>
  )
  }
-}
+)
 export default Form;

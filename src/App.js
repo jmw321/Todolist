@@ -4,6 +4,9 @@
   import Menu from './Menu.js';
   import Form from './TaskForm.js';
 
+
+
+  var value ='' ;
   var addShow = false;
   var menuShow = false;
   var boardItems = [{
@@ -23,19 +26,39 @@
     },
 
   ]
-
+var selectValue = boardItems[0].name;
 
 
   class App extends Component {
     constructor (props) {
       super(props);
-      this.state = {boardItems,addShow,menuShow}
+      this.state = {boardItems,addShow,menuShow,value,selectValue}
       this.showMenuClick = this.showMenuClick.bind(this)
       this.showAddClick = this.showAddClick.bind(this)
       this.showFormMenu = this.showFormMenu.bind(this)
+      this.addTaskClick = this.addTaskClick.bind(this)
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSelect = this.handleSelect.bind(this);
     }
 
 
+    handleChange (event) {
+      this.setState({value:event.target.value})
+
+    }
+
+    handleSelect (event) {
+      this.setState({selectValue: event.target.value})
+    }
+
+    addTaskClick (event) {
+      let newBoardItems = [...this.state.boardItems];
+      event.preventDefault()
+      console.log(this.state.selectValue)
+      newBoardItems.map(item => item.name === this.state.selectValue && item.items.push(this.state.value))
+      this.setState({boardItems:newBoardItems})
+
+    }
 
     showMenuClick () {
        this.state.menuShow === true? this.setState({menuShow:false}) : this.setState({menuShow:true});
@@ -66,7 +89,7 @@
       </header >
        < Menu menuShow = {this.state.menuShow} menuClick={this.showFormMenu}/>
        <main className = "mainContent" >
-       <Form  formshow = {this.state.addShow} showClick={this.showAddClick} />
+       {Form(this.state.addShow,this.showAddClick,this.state.boardItems,this.state.value,this.addTaskClick,this.handleChange,this.state.selectValue,this.handleSelect)}
           {
             boardItems.map(item => Card(item.name, item.items))
          }
