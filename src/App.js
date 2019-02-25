@@ -58,6 +58,7 @@ var selectValue = boardItems[0].name;
       console.log(this.state.selectValue)
       newBoardItems.map(item => item.name === this.state.selectValue && item.items.push(this.state.value))
       this.setState({boardItems:newBoardItems})
+      this.setState({value:''})
 
     }
 
@@ -76,8 +77,7 @@ var selectValue = boardItems[0].name;
 
     deleteItem (event) {
       let newBoardItems = [...this.state.boardItems];
-      console.log(event.target.id)
-      newBoardItems.map(item => item.items.length = 0 )
+      newBoardItems.map(item => item.id === Number(event.target.id) &&  item.items.splice(event.target.getAttribute('index'),1) )
       this.setState({boardItems:newBoardItems})
     }
 
@@ -99,7 +99,7 @@ var selectValue = boardItems[0].name;
        <main className = "mainContent" >
        {Form(this.state.addShow,this.showAddClick,this.state.boardItems,this.state.value,this.addTaskClick,this.handleChange,this.state.selectValue,this.handleSelect)}
           {
-            boardItems.map(item => Card(item.name, item.items, item.id, this.deleteItem))
+            boardItems.map(item => Card(item.name, item, item.id, this.deleteItem))
          }
       </main>
   </div>

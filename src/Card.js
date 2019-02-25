@@ -9,7 +9,7 @@
                <button id = "leftButton" className = "cardButton" >
                    <i class = "fas fa-chevron-left" > < /i>
                </button >
-            <ul onClick={deletes}> {items.map(item => < li className = "cardItemList" > {item} <button className="cardItemDelete" > x </button>< /li>)} </ul >
+            <ul onClick={deletes}> {items.items.map(item => < li className = "cardItemList"  > {item} <button className="cardItemDelete" id={items.id} index={items.items.indexOf(item)} > x </button>< /li>)} </ul >
                <button id = "rightButton" className = "cardButton" >
                   <i class = "fas fa-chevron-right" > < /i>
                </button >
