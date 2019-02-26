@@ -73,6 +73,7 @@ var selectValue = boardItems[0].name;
     showFormMenu (event) {
       console.log(event.target.id)
         event.target.id === "1" && this.setState({addShow:true,menuShow:false})
+        event.target.id === "0" && this.setState({addShow:false,menuShow:false})
     }
 
     deleteItem (event) {

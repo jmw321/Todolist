@@ -7,11 +7,11 @@ var Form = ((addShow,showAddClick,boardItems,value,handleSubmit,handleChange,sel
    <div className="form">
    <button className="close" onClick={showAddClick} > X </button>
      <form onSubmit={handleSubmit} >
-     Select Card: <br/>
+     Select Card:
      <select className="boardItemsOptions" value={selectValue} onChange={handleSelect}>
      {boardItems.map(item => <option id={item.id}> {item.name} </option> )}
     </select> <br/>
-     Enter Task: <br/>
+     Enter Task: 
        <input className="textInput" type="text" value={value} onChange={handleChange}>
        </input>
        <input type="submit" value="Submit">
