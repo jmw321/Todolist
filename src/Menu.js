@@ -9,6 +9,7 @@ class Menu extends Component  {
     <ul className="menuList" onClick={this.props.menuClick}>
         <li className="menuItem" id="0"> <i class="fas fa-home"></i> Home</li>
         <li className="menuItem" id="1"> <i class = "fas fa-plus"/> Add Task</li>
+        <li className="menuItem" id="2"> <i class="fas fa-folder-plus"></i> Add Card </li>
       </ul>
     </div>
    )
