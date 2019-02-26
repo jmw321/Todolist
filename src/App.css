@@ -141,19 +141,33 @@ header {
 }
 
 .cardItemDelete {
-  float: right;
+
+  padding: 5%;
+  border-radius: 20%;
+  height: 20px;
+  border: none;
+  background-color: #f7f6f5;
+
 }
 
 .textInput {
   width: 50%;
 }
 
+.fa-minus {
+  vertical-align:top;
+}
 .formSubmit {
   background-color: #d67f22;
   border-radius: 10%;
   color: white;
   width: 10%;
   height: 3%;
-  min-height: 50px;
+  min-height: 30px;
   min-width: 100px;
+}
+
+.close {
+  background-color:  #c9c5c1;
+  border: none;
 }
