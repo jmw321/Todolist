@@ -10,7 +10,7 @@
                     {items.items.map(item =>
                       < li className = "cardItemList"  > {item}
                         <button className="cardItemDelete" id={items.id} index={items.items.indexOf(item)} >
-                            <i class="fas fa-minus"></i>
+                            <i id={items.id}  index={items.items.indexOf(item)} class="fas fa-minus"></i>
                         </button>< /li>)}
                    </ul >
             </div>
