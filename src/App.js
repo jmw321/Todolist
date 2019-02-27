@@ -35,27 +35,19 @@ var selectValue = boardItems[0].name;
     constructor (props) {
       super(props);
       this.state = {boardItems,addShow,menuShow,value,selectValue,cardAdd}
-      this.showMenuClick = this.showMenuClick.bind(this)
-      this.showAddClick = this.showAddClick.bind(this)
-      this.showFormMenu = this.showFormMenu.bind(this)
-      this.addTaskClick = this.addTaskClick.bind(this)
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSelect = this.handleSelect.bind(this);
-      this.deleteItem = this.deleteItem.bind(this);
-      this.addFormClick = this.addFormClick.bind(this);
     }
 
 
-    handleChange (event) {
+    handleChange = (event) => {
       this.setState({value:event.target.value})
 
     }
 
-    handleSelect (event) {
+    handleSelect = (event) => {
       this.setState({selectValue: event.target.value})
     }
 
-    addTaskClick (event) {
+    addTaskClick = (event) => {
       let newBoardItems = [...this.state.boardItems];
       event.preventDefault()
       console.log(this.state.selectValue)
@@ -65,33 +57,37 @@ var selectValue = boardItems[0].name;
 
     }
 
-    addFormClick (event) {
+    addFormClick = (event) => {
       event.preventDefault()
-      this.setState({boardItems: [...this.state.boardItems, {id:3,name:this.state.value,items:[]} ]})
+      this.setState({boardItems: [...this.state.boardItems, {id:this.state.boardItems.length,name:this.state.value,items:[]} ]})
       this.setState({value:'',cardAdd:false})
 
 
     }
 
-    showMenuClick () {
+    showMenuClick =  () => {
        this.state.menuShow === true? this.setState({menuShow:false}) : this.setState({menuShow:true});
     }
 
-    showAddClick () {
+    showAddClick =  () => {
        this.state.addShow === true? this.setState({addShow:false}) : this.setState({addShow:true});
     }
 
-    showFormMenu (event) {
+    showFormMenu = (event) => {
       console.log(event.target.id)
         event.target.id === "1" && this.setState({addShow:true,menuShow:false})
         event.target.id === "0" && this.setState({addShow:false,menuShow:false,cardAdd:false})
         event.target.id === "2" && this.setState({cardAdd:true, menuShow:false})
     }
 
-    deleteItem (event) {
+    deleteItem = (event) => {
       let newBoardItems = [...this.state.boardItems];
       newBoardItems.map(item => item.id === Number(event.target.id) &&  item.items.splice(event.target.getAttribute('index'),1) )
       this.setState({boardItems:newBoardItems})
+    }
+
+    closeCardForm =  () => {
+      this.setState({cardAdd:false})
     }
 
 
@@ -110,7 +106,7 @@ var selectValue = boardItems[0].name;
       </header >
        < Menu menuShow = {this.state.menuShow} menuClick={this.showFormMenu}/>
        <main className = "mainContent" >
-       {CardForm(this.state.cardAdd,this.state.value,this.addFormClick, this.handleChange)}
+       {CardForm(this.state.cardAdd,this.state.value,this.addFormClick, this.handleChange, this.closeCardForm)}
        {Form(this.state.addShow,this.showAddClick,this.state.boardItems,this.state.value,this.addTaskClick,this.handleChange,this.state.selectValue,this.handleSelect)}
           {
             this.state.boardItems.map(item => Card(item.name, item, item.id, this.deleteItem))

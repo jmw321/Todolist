@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import './App.css';
 
 
-var CardForm = ((cardShow,value,addFormClick,handleChange) => { return (
+var CardForm = ((cardShow,value,addFormClick,handleChange,closeCardForm) => { return (
    cardShow === true &&
    <div className="form">
-   <button className="close"  > <i class="far fa-window-close fa-2x"></i> </button>
+   <button className="close" onClick={closeCardForm}  > <i class="far fa-window-close fa-2x"></i> </button>
      <form onSubmit={addFormClick} >
      Enter Name:
        <input className="textInput" type="text" value={value} onChange={handleChange}>
