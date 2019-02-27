@@ -35,6 +35,7 @@ var selectValue = boardItems[0].name;
     constructor (props) {
       super(props);
       this.state = {boardItems,addShow,menuShow,value,selectValue,cardAdd}
+      this.deleteItem = this.deleteItem.bind(this)
     }
 
 
@@ -80,8 +81,9 @@ var selectValue = boardItems[0].name;
         event.target.id === "2" && this.setState({cardAdd:true, menuShow:false})
     }
 
-    deleteItem = (event) => {
+    deleteItem (event) {
       let newBoardItems = [...this.state.boardItems];
+      console.log(event.target.id)
       newBoardItems.map(item => item.id === Number(event.target.id) &&  item.items.splice(event.target.getAttribute('index'),1) )
       this.setState({boardItems:newBoardItems})
     }
